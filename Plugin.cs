@@ -7,6 +7,7 @@ using Dalamud.Game.Command;
 
 using Dalamud.Game.Internal.Gui;
 using Dalamud.Game.Text;
+using Dalamud.Game.Text.SeStringHandling;
 
 namespace DeepDungeonDex
 {
