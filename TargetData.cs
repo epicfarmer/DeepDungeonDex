@@ -2,6 +2,7 @@
 using Dalamud.Plugin;
 using Dalamud.Game.ClientState.Actors.Types;
 using Dalamud.Game.ClientState.Actors.Types.NonPlayer;
+using Dalamud.Game.ClientState.Structs;
 
 namespace DeepDungeonDex
 {
@@ -9,6 +10,7 @@ namespace DeepDungeonDex
 	{
 		public static int NameID { get; set; }
 		public static string Name { get; set; }
+		plublic static StatusEffect[] StatusEffects;
 
 		public bool IsValidTarget(Actor target)
 		{

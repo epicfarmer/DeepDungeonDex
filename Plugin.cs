@@ -92,7 +92,7 @@ namespace DeepDungeonDex
           XivChatType type, uint senderId, ref SeString sender, ref SeString message, ref bool isHandled) {
           // This is the function which deals with the chat hook
 #if DEBUG
-            PluginLog.Log("Chat message from type {0}: {1}", type, textValue);
+            PluginLog.Log("Chat message from type {0}: {1}", type, message.TextValue);
 #endif
         }
 
