@@ -5,6 +5,8 @@ using Dalamud.Game.Internal;
 using Dalamud.Game.ClientState.Actors.Types;
 using Dalamud.Game.Command;
 
+using Dalamud.Game.Internal.Gui;
+
 namespace DeepDungeonDex
 {
     public class Plugin : IDalamudPlugin
@@ -27,6 +29,7 @@ namespace DeepDungeonDex
             this.cui = new ConfigUI(config.Opacity, config.IsClickthrough, config);
             this.pluginInterface.UiBuilder.OnBuildUi += this.ui.Draw;
             this.pluginInterface.UiBuilder.OnBuildUi += this.cui.Draw;
+            this.pluginInterface.Framework.Gui.Chat.OnChatMessage += OnChatMessage;
 
             this.pluginInterface.CommandManager.AddHandler("/pddd", new CommandInfo(OpenConfig)
             {
@@ -60,11 +63,8 @@ namespace DeepDungeonDex
                 ui.IsVisible = false;
                 return;
             }
-            else
-            { 
-                previousTarget = target;
-                ui.IsVisible = true;
-            }
+            previousTarget = target;
+            ui.IsVisible = true;
         }
 
         #region IDisposable Support
@@ -82,6 +82,13 @@ namespace DeepDungeonDex
             this.pluginInterface.Framework.OnUpdateEvent -= this.GetData;
 
             this.pluginInterface.Dispose();
+        }
+
+        private void OnChatMessage(XivChatType type, uint id, ref SeString sender, ref SeString message, ref bool handled) {
+          // This is the function which deals with the chat hook
+#if DEBUG
+            PluginLog.Log("Chat message from type {0}: {1}", type, textValue);
+#endif
         }
 
         public void Dispose()
