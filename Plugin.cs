@@ -6,6 +6,7 @@ using Dalamud.Game.ClientState.Actors.Types;
 using Dalamud.Game.Command;
 
 using Dalamud.Game.Internal.Gui;
+using Dalamud.Game.Internal.Gui.Addon;
 using Dalamud.Game.Text;
 using Dalamud.Game.Text.SeStringHandling;
 
@@ -87,7 +88,8 @@ namespace DeepDungeonDex
             this.pluginInterface.Dispose();
         }
 
-        private void OnChatMessage(XivChatType type, uint id, ref SeString sender, ref SeString message, ref bool handled) {
+        private void OnChatMessage(
+          XivChatType type, uint senderId, ref SeString sender, ref SeString message, ref bool isHandled) {
           // This is the function which deals with the chat hook
 #if DEBUG
             PluginLog.Log("Chat message from type {0}: {1}", type, textValue);
