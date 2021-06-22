@@ -6,6 +6,7 @@ using Dalamud.Game.ClientState.Actors.Types;
 using Dalamud.Game.Command;
 
 using Dalamud.Game.Internal.Gui;
+using Dalamud.Game.Text;
 
 namespace DeepDungeonDex
 {
@@ -78,6 +79,7 @@ namespace DeepDungeonDex
 
             this.pluginInterface.UiBuilder.OnBuildUi -= this.ui.Draw;
             this.pluginInterface.UiBuilder.OnBuildUi -= this.cui.Draw;
+            this.pluginInterface.Framework.Gui.Chat.OnChatMessage -= OnChatMessage;
 
             this.pluginInterface.Framework.OnUpdateEvent -= this.GetData;
 

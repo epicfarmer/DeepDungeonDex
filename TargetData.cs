@@ -16,7 +16,7 @@ namespace DeepDungeonDex
 			{
 				Name = bnpc.Name;
 				NameID = bnpc.NameId;
-				StatusEffects = bnpc.StatusEffects
+				StatusEffects = bnpc.StatusEffects;
 				return true;
 			}
 			else
