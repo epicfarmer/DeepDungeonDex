@@ -95,10 +95,10 @@ namespace DeepDungeonDex
           string pattern = "stun"
           Regex rg = new Regex(pattern, RegexOptions.IgnoreCase);  
           if (type == 2730 && rg.matches(message.TextValue)) {
-            PluginLog.Log("Chat message from type status activated : {0}", message.TextValue);
+            PluginLog.Log("Chat message from type status activated from {0} : {1}", senderId, message.TextValue);
           }
           if (type == 2735 && rg.matches(message.TextValue)) {
-            PluginLog.Log("Chat message from type status resisted : {0}", message.TextValue);
+            PluginLog.Log("Chat message from type status resisted from {0} : {1}", senderId, message.TextValue);
           }
         }
 
