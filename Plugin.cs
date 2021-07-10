@@ -89,9 +89,17 @@ namespace DeepDungeonDex
         }
 
         private void OnChatMessage(
-          XivChatType type, uint senderId, ref SeString sender, ref SeString message, ref bool isHandled) {
+          XivChatType type, uint senderId, ref SeString sender, ref SeString message, ref bool isHandled)
+        {
           // This is the function which deals with the chat hook
-            PluginLog.Log("Chat message from type {0}: {1}", type, message.TextValue);
+          string pattern = "stun"
+          Regex rg = new Regex(pattern, RegexOptions.IgnoreCase);  
+          if (type == 2730 && rg.matches(message.TextValue)) {
+            PluginLog.Log("Chat message from type status activated : {0}", message.TextValue);
+          }
+          if (type == 2735 && rg.matches(message.TextValue)) {
+            PluginLog.Log("Chat message from type status resisted : {0}", message.TextValue);
+          }
         }
 
         public void Dispose()
